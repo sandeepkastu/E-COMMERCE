@@ -43,7 +43,7 @@ export default function Ecommerce() {
         setWomen([])
     await fetch('https://dummyjson.com/products')
         .then(response => response.json())
-        .then(response => setMen(response.products))
+        .then(response => setMen(response.products[12].images))
         .catch(err => console.error(err));
 }
   return (
@@ -63,8 +63,8 @@ export default function Ecommerce() {
     
     {women.map((info,i)=>(<span key={info.id}><img  src={info.images[i+2]} alt='product_image' height='100px' width='150px' />
     <p>Price:{info.price}</p></span>))}
-    {men.map((info,i)=>(<span key={info.id}><img  src={info.images[i+3]} alt='product_image' height='100px' width='150px' />
-    <p> {info.brand}</p></span>))}
+    {men.map((images,i)=>(<span  key={i}><img class='men' src={images} alt='product_image' height='100px' width='150px' />
+    </span>))}
       
     </div>
   )
